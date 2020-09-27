@@ -175,8 +175,8 @@ def main():
     # Default parameters.
     params = {
         'base_path': '',
-        'subtitle': 'Lorem Ipsum',
-        'author': 'Admin',
+        'subtitle': 'A simple site',
+        'author': 'Matt Deakyne',
         'site_url': 'http://localhost:8000',
         'current_year': datetime.datetime.now().year
     }
@@ -204,24 +204,24 @@ def main():
                page_layout, **params)
 
     # Create blogs.
-    blog_posts = make_pages('content/blog/*.md',
-                            '_site/blog/{{ slug }}/index.html',
-                            post_layout, blog='blog', **params)
-    news_posts = make_pages('content/news/*.html',
-                            '_site/news/{{ slug }}/index.html',
-                            post_layout, blog='news', **params)
+    blog_posts = make_pages('content/badges/*.md',
+                            '_site/badges/{{ slug }}/index.html',
+                            post_layout, blog='badges', **params)
+    news_posts = make_pages('content/agons/*.html',
+                            '_site/agons/{{ slug }}/index.html',
+                            post_layout, blog='agons', **params)
 
     # Create blog list pages.
-    make_list(blog_posts, '_site/blog/index.html',
-              list_layout, item_layout, blog='blog', title='Blog', **params)
-    make_list(news_posts, '_site/news/index.html',
-              list_layout, item_layout, blog='news', title='News', **params)
+    make_list(blog_posts, '_site/badges/index.html',
+              list_layout, item_layout, blog='badges', title='Badges', **params)
+    make_list(news_posts, '_site/agons/index.html',
+              list_layout, item_layout, blog='agons', title='Agons', **params)
 
     # Create RSS feeds.
-    make_list(blog_posts, '_site/blog/rss.xml',
-              feed_xml, item_xml, blog='blog', title='Blog', **params)
-    make_list(news_posts, '_site/news/rss.xml',
-              feed_xml, item_xml, blog='news', title='News', **params)
+   # make_list(blog_posts, '_site/blog/rss.xml',
+   #           feed_xml, item_xml, blog='blog', title='Blog', **params)
+   # make_list(news_posts, '_site/news/rss.xml',
+   #           feed_xml, item_xml, blog='news', title='News', **params)
 
 
 # Test parameter to be set temporarily by unit tests.
